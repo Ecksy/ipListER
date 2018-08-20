@@ -56,7 +56,7 @@ def parse_nessus_XML(xmlfile):
 					if 'pluginName' in report_item.attrib:
 						if report_item.attrib['svc_name'] == "general": continue
 
-						fullLine = currIP + " " + report_item.attrib['port'] + " "  + report_item.attrib['protocol'] + " " + report_item.attrib['svc_name'] + " up" 
+						fullLine = currIP + " " + report_item.attrib['port'] + "/"  + report_item.attrib['svc_name'] + " " + report_item.attrib['protocol'] 
 						ipALL.add(fullLine)
 
 # This is the nmap parser
@@ -105,7 +105,7 @@ def parse_nMap_XML(xmlfile):
 									service = "unknown"
 
 								if port is not None:
-									fullLine = ipADDR + " " + port + " " + proto +" " + service +" " + state
+									fullLine = ipADDR + " " + port + "/" + service +" " + proto
 									ipALL.add(fullLine)
 
 def main():
@@ -155,7 +155,7 @@ def outIT():
 		quit()
 
 	sorted_IP = sorted(ipALL)
-	fN = "ip_pivot_list_" + str(time.time()) + ".txt"
+	fN = "client_ip_port_list_" + str(time.strftime("%Y%m%d%H%M%S")) + ".txt"
 	print "Output saved to :" + fN
 
 	with open(fN, 'w') as f:
