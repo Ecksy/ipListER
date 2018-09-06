@@ -35,7 +35,7 @@ def parse_nessus_XML(xmlfile):
 	try:
 		tree = ET.parse(xmlfile)
 	except ParseError as e:
-		logging.warning("CRAP ... had issues with %r", xmlfile)
+		logging.warning("ERROR...had issues with %r", xmlfile)
 		return
 
 	root = tree.getroot()
@@ -71,7 +71,7 @@ def parse_nMap_XML(xmlfile):
 	try:
 		tree = ET.parse(xmlfile)
 	except ParseError as e:
-		logging.warning("CRAP ... had issues with %r", xmlfile)
+		logging.warning("ERROR...had issues with %r", xmlfile)
 		return
 
 	# get root element
