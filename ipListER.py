@@ -95,7 +95,7 @@ def parse_nMap_XML(xmlfile):
 						state = a[0].attrib.get('state')
 
 						if state is not None:
-							match = re.search('open',state)
+							match = re.search('^open$',state)
 
 							if match:
 								port = a.attrib.get('portid')
